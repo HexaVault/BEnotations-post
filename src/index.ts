@@ -4,3 +4,4 @@ export * from "./stacked-scientific";
 export * from "./semi-stacked-scientific";
 export * from "./tetrational";
 export * from "./true-tetrational";
+export * from "./simplified-extended-scientific";
