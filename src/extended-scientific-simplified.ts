@@ -1,4 +1,4 @@
-import Decimal from "break_eternity.js";
+import type Decimal from "break_eternity.js";
 import { Notation } from "./notation";
 import { formatNumber } from "./utils";
 
@@ -32,7 +32,8 @@ function format(value: Decimal, places: number): string {
 
     if (slog.gte(1e6)) return `F${format(floor, slog.gte(1e9) ? places : 99)}`;
 
-    const mant = Decimal.pow10(slog.sub(floor)).toStringWithDecimalPlaces(places);
+    const mant = slog.sub(floor).pow10()
+      .toStringWithDecimalPlaces(places);
     return `${mant}F${formatNumber(floor.toNumber(), 99, true)}`;
   } else if (value.gte("1e1000000")) return expFormat(value, places, false);
   else if (value.gte("1e10000")) return expFormat(value, places, true);

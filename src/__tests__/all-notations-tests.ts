@@ -267,12 +267,12 @@ describe("Extended Scientific Simplified Notation", () => {
   });
 
   it("should format NaN, Infinity, and -Infinity correctly", () => {
-    expect(notation.formatLDecimal(new Decimal(Decimal.dNaN), 2)).toBe("NaN");
-    expect(notation.formatLDecimal(new Decimal(Decimal.dNaN), 10)).toBe("NaN");
-    expect(notation.formatLDecimal(new Decimal(Decimal.dInf), 2)).toBe("Infinity");
-    expect(notation.formatLDecimal(new Decimal(Decimal.dInf), 10)).toBe("Infinity");
-    expect(notation.formatLDecimal(new Decimal(Decimal.dNegInf), 2)).toBe("-Infinity");
-    expect(notation.formatLDecimal(new Decimal(Decimal.dNegInf), 10)).toBe("-Infinity");
+    expect(notation.formatLDecimal(Decimal.dNaN, 2)).toBe("NaN");
+    expect(notation.formatLDecimal(Decimal.dNaN, 10)).toBe("NaN");
+    expect(notation.formatLDecimal(Decimal.dInf, 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(Decimal.dInf, 10)).toBe("Infinity");
+    expect(notation.formatLDecimal(Decimal.dNegInf, 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(Decimal.dNegInf, 10)).toBe("-Infinity");
   });
 
   it("should format all values from e9e15 up to eee9 as eXeY", () => {
@@ -299,14 +299,14 @@ describe("Extended Scientific Simplified Notation", () => {
   });
 
   it("should format values from F1e6 to F1e9 as Fxxx,xxx", () => {
-    expect(notation.formatLDecimal(Decimal.tetrate(10, 1.23e6), 2)).toBe("F1,230,000");
-    expect(notation.formatLDecimal(Decimal.tetrate(10, 1.293e7), 2)).toBe("F12,930,000");
-    expect(notation.formatLDecimal(Decimal.tetrate(10, 1.2344e8), 3)).toBe("F123,440,000");
+    expect(notation.formatLDecimal(new Decimal("(e^1.23e6)1"), 2)).toBe("F1,230,000");
+    expect(notation.formatLDecimal(new Decimal("(e^1.293e7)1"), 2)).toBe("F12,930,000");
+    expect(notation.formatLDecimal(new Decimal("(e^1.2344e8)1"), 3)).toBe("F123,440,000");
   });
 
   it("should format values from F1e9 to F1.79e308 as FxeY", () => {
-    expect(notation.formatLDecimal(Decimal.tetrate(10, 1e9), 2)).toBe("F1.00e9");
-    expect(notation.formatLDecimal(Decimal.tetrate(10, 1e9), 3)).toBe("F1.000e9");
+    expect(notation.formatLDecimal(new Decimal("(e^1e9)39"), 2)).toBe("F1.00e9");
+    expect(notation.formatLDecimal(new Decimal("(e^1e9)39"), 3)).toBe("F1.000e9");
     expect(notation.formatLDecimal(new Decimal("(e^1.289e20)2"), 2)).toBe("F1.29e20");
     expect(notation.formatLDecimal(new Decimal("(e^1.289e20)2"), 3)).toBe("F1.289e20");
     expect(notation.formatLDecimal(new Decimal("(e^1.3923e80)39"), 2)).toBe("F1.39e80");
