@@ -30,19 +30,17 @@ function format(value: Decimal, places: number): string {
     const slog = value.slog();
     const floor = slog.floor();
 
-    if (slog.gte(1e6)) return `F${format(floor, slog.gte(1e9) ? places : 99)}`;
-
     const mant = slog.sub(floor).pow10()
       .toStringWithDecimalPlaces(places);
-    return `${mant}F${formatNumber(floor.toNumber(), 99, true)}`;
+    return `${mant}F${formatNumber(floor.toNumber(), slog.gte(1e9) ? places : 99, true)}`;
   } else if (value.gte("1e1000000")) return expFormat(value, places, false);
   else if (value.gte(1e9)) return expFormat(value, places, true);
   return formatNumber(value.toNumber(), places, true);
 }
 
-export class ExtendedScientificSimplifiedNotation extends Notation {
+export class SimplifiedExtendedScientificNotation extends Notation {
   public get name(): string {
-    return "Extended Scientific Simplified";
+    return "Simplified Extended Scientific";
   }
 
   public get isSlog(): boolean {
