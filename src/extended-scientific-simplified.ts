@@ -36,7 +36,6 @@ function format(value: Decimal, places: number): string {
       .toStringWithDecimalPlaces(places);
     return `${mant}F${formatNumber(floor.toNumber(), 99, true)}`;
   } else if (value.gte("1e1000000")) return expFormat(value, places, false);
-  else if (value.gte("1e10000")) return expFormat(value, places, true);
   else if (value.gte(1e9)) return expFormat(value, places, true);
   return formatNumber(value.toNumber(), places, true);
 }
