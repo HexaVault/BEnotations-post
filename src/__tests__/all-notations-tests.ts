@@ -9,6 +9,7 @@ import { StackedScientificNotation } from "../stacked-scientific";
 import { TetrationalNotation } from "../tetrational";
 import { TrueTetrationalNotation } from "../true-tetrational";
 import { SimplifiedExtendedScientificNotation } from "../simplified-extended-scientific";
+import { StackedMixedScientificNotation } from "../stacked-mixed-scientific";
 
 describe("Semi-Stacked Scientific Notation", () => {
   const notation = new SemiStackedScientificNotation();
@@ -315,5 +316,23 @@ describe("Simplified Extended Scientific Notation", () => {
     expect(notation.formatLDecimal(new Decimal("(e^1.7583e163)100"), 3)).toBe("1.000F1.76e163");
     expect(notation.formatLDecimal(new Decimal("(e^1.9203e274)85"), 2)).toBe("1.00F1.9e274");
     expect(notation.formatLDecimal(new Decimal("(e^1.9203e274)85"), 3)).toBe("1.000F1.92e274");
+  });
+});
+
+describe("Stacked Mixed Scientific Notation", () => {
+  const notation = new StackedMixedScientificNotation();
+
+  it("should return the expected name", () => {
+    expect(notation.name).toBe("Stacked Mixed Scientific");
+  });
+
+
+  it("should format all values appropriately", () => {
+    expect(notation.formatLDecimal(new Decimal("e7e23"), 2)).toBe("e700.00Sx");
+    expect(notation.formatLDecimal(new Decimal("e7e9"), 2)).toBe("e7.00B");
+    expect(notation.formatLDecimal(new Decimal("ee3e3"), 2)).toBe("e1.00NNnNe");
+    expect(notation.formatLDecimal(new Decimal("eee3e3"), 2)).toBe("ee1.00NNnNe");
+    expect(notation.formatLDecimal(new Decimal("eeee3e3"), 2)).toBe("eee1.00NNnNe");
+    expect(notation.formatLDecimal(new Decimal("eeeee3e3"), 2)).toBe("[e^3]e1.00NNnNe");
   });
 });
