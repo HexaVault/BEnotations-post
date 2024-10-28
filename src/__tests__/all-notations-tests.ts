@@ -8,7 +8,7 @@ import { SemiStackedScientificNotation } from "../semi-stacked-scientific";
 import { StackedScientificNotation } from "../stacked-scientific";
 import { TetrationalNotation } from "../tetrational";
 import { TrueTetrationalNotation } from "../true-tetrational";
-import { SimplifiedExtendedScientificNotation } from "../simplified-extended-scientific";
+import { SimpleExtendedScientificNotation } from "../simple-extended-scientific";
 import { StackedMixedScientificNotation } from "../stacked-mixed-scientific";
 
 describe("Semi-Stacked Scientific Notation", () => {
@@ -260,11 +260,11 @@ describe("True Tetrational Notation", () => {
   });
 });
 
-describe("Simplified Extended Scientific Notation", () => {
-  const notation = new SimplifiedExtendedScientificNotation();
+describe("Simple Extended Scientific Notation", () => {
+  const notation = new SimpleExtendedScientificNotation();
 
   it("should return the expected name", () => {
-    expect(notation.name).toBe("Simplified Extended Scientific");
+    expect(notation.name).toBe("Simple Extended Scientific");
   });
 
   it("should format NaN, Infinity, and -Infinity correctly", () => {

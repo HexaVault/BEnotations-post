@@ -38,9 +38,9 @@ function format(value: Decimal, places: number): string {
   return formatNumber(value.toNumber(), places, true);
 }
 
-export class SimplifiedExtendedScientificNotation extends Notation {
+export class SimpleExtendedScientificNotation extends Notation {
   public get name(): string {
-    return "Simplified Extended Scientific";
+    return "Simple Extended Scientific";
   }
 
   public get isSlog(): boolean {

@@ -1,6 +1,6 @@
 {
   "name": "adnot-beport-large",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Notations used in Antimatter Dimensions, built for break_eternity.js. This set of notations is specifically built for numbers greater than 1e9e15",
   "scripts": {
     "build": "npm run build:ad",
