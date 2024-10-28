@@ -5,3 +5,5 @@ export * from "./semi-stacked-scientific";
 export * from "./tetrational";
 export * from "./true-tetrational";
 export * from "./simplified-extended-scientific";
+export * from "./hyper-e-notation";
+export * from "./stacked-mixed-scientific";
