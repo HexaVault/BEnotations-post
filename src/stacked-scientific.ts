@@ -14,7 +14,7 @@ export class StackedScientificNotation extends Notation {
 
   public formatLDecimal(value: Decimal, places: number): string {
     if (value.isNan()) return "NaN";
-    if (!value.isFinite) return `${value.sign === -1 ? "-" : ""}Infinity`;
+    if (!value.isFinite()) return `${value.sign === -1 ? "-" : ""}Infinity`;
     if (value.layer <= 4) {
       let str = "";
       str += "e".repeat(value.layer - 1);

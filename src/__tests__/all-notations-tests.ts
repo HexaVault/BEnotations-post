@@ -50,6 +50,12 @@ describe("Semi-Stacked Scientific Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 2)).toBe("F4E7.00e47");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 2)).toBe("F4E7.00e99");
   });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("Stacked Scientific Notation", () => {
@@ -91,6 +97,12 @@ describe("Stacked Scientific Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 2)).toBe("[e^4]7.00e47");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 2)).toBe("[e^4]7.00e99");
   });
+  
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("Extended Scientific Notation", () => {
@@ -130,6 +142,12 @@ describe("Extended Scientific Notation", () => {
     expect(notation.formatLDecimal(new Decimal("(e^2.34e15)1234"), 2)).toBe("F2.34e15E1.00e1234");
     expect(notation.formatLDecimal(new Decimal("(e^2.34e15)1234"), 0)).toBe("F2e15E1e1234");
   });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("Extended Logarithm Notation", () => {
@@ -161,6 +179,12 @@ describe("Extended Logarithm Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e23"), 0)).toBe("F6");
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 5)).toBe("F6.29987");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 5)).toBe("F6.39273");
+  });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
   });
 });
 
@@ -194,6 +218,12 @@ describe("Hyper E Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 2)).toBe("E7.00e47#4");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 2)).toBe("E7.00e99#4");
   });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("Tetrational Notation", () => {
@@ -226,6 +256,12 @@ describe("Tetrational Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 2)).toBe("10^^4^7.00e47");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 2)).toBe("10^^4^7.00e99");
   });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("True Tetrational Notation", () => {
@@ -236,7 +272,7 @@ describe("True Tetrational Notation", () => {
   });
 
 
-  it("should format all values as Fx", () => {
+  it("should format all values as 10^^x", () => {
     expect(notation.formatLDecimal(new Decimal("e7e23"), 2)).toBe("10^^3.19");
     expect(notation.formatLDecimal(new Decimal("e7.15e23"), 2)).toBe("10^^3.19");
     expect(notation.formatLDecimal(new Decimal("e7e23"), 0)).toBe("10^^3");
@@ -257,6 +293,12 @@ describe("True Tetrational Notation", () => {
     expect(notation.formatLDecimal(new Decimal("eeee7e23"), 0)).toBe("10^^6");
     expect(notation.formatLDecimal(new Decimal("eeee7e47"), 5)).toBe("10^^6.29987");
     expect(notation.formatLDecimal(new Decimal("eeee7e99"), 5)).toBe("10^^6.39273");
+  });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
   });
 });
 
@@ -317,6 +359,12 @@ describe("Simple Extended Scientific Notation", () => {
     expect(notation.formatLDecimal(new Decimal("(e^1.9203e274)85"), 2)).toBe("1.00F1.9e274");
     expect(notation.formatLDecimal(new Decimal("(e^1.9203e274)85"), 3)).toBe("1.000F1.92e274");
   });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
+  });
 });
 
 describe("Stacked Mixed Scientific Notation", () => {
@@ -346,5 +394,11 @@ describe("Stacked Mixed Scientific Notation", () => {
     // This is because we need to extract 2 e's to get from 3e3 to e1.00 NNnNe
     // Which leaves us with 2995, which then rounds to e3k
     expect(notation.formatLDecimal(new Decimal("(e^2997)3e3"), 2)).toBe("[e^3.00 K]e1.00 NNnNe");
+  });
+
+  it("Should handle Infinite and NaN values correctly", () => {
+    expect(notation.formatLDecimal(new Decimal(Infinity), 2)).toBe("Infinity");
+    expect(notation.formatLDecimal(new Decimal(-Infinity), 2)).toBe("-Infinity");
+    expect(notation.formatLDecimal(new Decimal(NaN), 2)).toBe("NaN");
   });
 });
